@@ -36,4 +36,189 @@ header button:hover{
 header h2{
     width: 100%;
     text-align: center;
+    padding-right: 42px;
+}
+
+
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 24px;
+    width: 80%;
+    margin: auto;
+}
+
+main .wellcome{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 32px;
+    width: 400px;
+}
+
+main .wellcome span{
+    background-color: rgb(15, 15, 53);
+    color: rgb(11, 11, 218);
+    border-radius: 50%;
+    border: 1px solid rgb(11 11 218 / 0.2);
+    width: 78px;
+    height: 78px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    margin-bottom: 16px;
+}
+main .wellcome p{
+    padding-top: 8px;
+    opacity: 0.5;
+    margin: 0px 40px;
+    text-align: center;
+}
+
+main form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+main form > div{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+main form div input{
+    outline: none;
+    width: 100%;
+    height: 56px;
+    padding: 8px 16px 8px 44px;
+    border-radius: 12px;
+    border: 1px solid rgb(49, 49, 104);
+    background-color: rgb(24, 24, 52);
+    color: white;
+    font-size: 16px;
+}
+
+main form div input:focus{
+    box-shadow: 0 0 0 2px #0b0bda80;
+}
+
+main form > div .box-input{
+    position: relative;
+}
+main form > div .box-input span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    transform: translateY(3px);
+    opacity: .5;
+    
+}
+
+main form button{
+    height: 56px;
+    width: 100%;
+    grid-column: span 2;
+    border-radius: 12px;
+    background-color: rgb(11 11 218);
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(11, 11, 218, 0.2) 0px 10px 15px -3px, rgba(11, 11, 218, 0.2) 0px 4px 6px -4px;
+    color: white;
+    border: 1px solid rgb(10, 0, 146);
+    font-size: 19px;
+    transition: .2s;
+}
+
+main form button:hover{
+    background-color: rgb(12, 12, 200);
+}
+
+
+main #line{
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+
+main #line::before{
+    content: "";
+    width: 40%;
+    height: 1px;
+    background-color: rgb(49, 49, 104);
+    position: absolute;
+    top: 50%;
+    left: 0;
+}
+
+main #line::after{
+    content: "";
+    width: 40%;
+    height: 1px;
+    background-color: rgb(49, 49, 104);
+    position: absolute;
+    top: 50%;
+    right: 0;
+    
+}
+
+main .maidea{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+main .maidea button{
+    border: none;
+    height: 50px;
+    background-color: rgb(24, 24, 52);
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+main .maidea button:hover{
+    background-color: rgb(32, 32, 64);
+}
+
+main .maidea button:nth-child(1) span i{
+    color: red;
+    
+}
+
+main .maidea button:nth-child(2) span i{
+    color: blue;
+}
+
+
+main #login{
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+@media (max-width:900px) {
+    main form{
+        grid-template-columns: 1fr;
+    }
+    main form button{
+        grid-column: span 1;
+    }
 }

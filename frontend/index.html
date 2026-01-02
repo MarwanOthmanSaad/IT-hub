@@ -21,52 +21,56 @@
             <h1 id="title">Sign up</h1>
             <p>Join our community today and enjoy a unique experience tailored just for you.</p>
         </div>
-        <form action="">
+        <form action=""  >  
             <div id="inputFirstName">
-                <label for="">First Name</label>
+                <label>First Name</label>
                 <div class="box-input">
                     <span><i class="fa-solid fa-user-pen"></i></span>
-                    <input type="text" placeholder="First Name">
+                    <input type="text" placeholder="First Name" id="firstName">
                 </div>
+                <p class="text-error-firstName text-error"></p>
             </div>
             <div id="inputLastName">
-                <label for="">Last Name</label>
+                <label>Last Name</label>
                 <div class="box-input">
                     <span><i class="fa-solid fa-user-pen"></i></i></span>
-                    <input type="text" placeholder="Last Name">
+                    <input type="text" placeholder="Last Name" id="lastName">
                 </div>
-                
+                <p class="text-error-lastName  text-error" ></p>
             </div>
             <div id="inputUsername">
-                <label for="">Username</label>
+                <label>Username</label>
                 <div class="box-input">
                     <span><i class="fa-regular fa-circle-user"></i></span>
-                    <input type="text" placeholder="Create username">
+                    <input type="text" placeholder="Create username"  id="username">
                 </div>
+                <p class="text-error-username text-error"></p>
             </div>
             <div id="inputEmail">
-                <label for="">Email</label>
+                <label>Email</label>
                 <div class="box-input">
                     <span><i class="fa-regular fa-envelope"></i></span>
-                    <input type="email" placeholder="Exampal@gamil.com">
+                    <input type="email" placeholder="Exampal@gamil.com" id="email">
                 </div>
+                <p class="text-error-email text-error"></p>
             </div>
             <div id="inputPassword">
-                <label for="">Password</label>
+                <label >Password</label>
                 <div class="box-input">
                     <span><i class="fa-solid fa-lock"></i></span>
-                    <input type="password" placeholder="Create password">
+                    <input type="password" placeholder="Create password" id="password">
                 </div>
-
+                <p class="text-error-password text-error"></p>
             </div>
             <div id="inputConfirmPassword">
-                <label for="">Confirm Password</label>
+                <label>Confirm Password</label>
                 <div class="box-input">
                     <span><i class="fa-solid fa-lock"></i></span>
-                    <input type="password" placeholder="Re-enter password">
+                    <input type="password" placeholder="Re-enter password" id="confirmPassword">
                 </div>
+                <p class="text-error-confirmPassword text-error"></p>
             </div>
-            <button id="button">Create account</button>
+            <button id="button" >Create account</button>
         </form>
 
         <span id="line">Or continue with</span>

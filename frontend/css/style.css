@@ -226,6 +226,28 @@ main #login{
     font-size: 14px;
     margin: -5px 0 0 20px;
 }
+
+
+.box-text-ok{
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50% , -80px);
+    background-color: rgb(15, 2, 88);
+    padding: 10px;
+    display: flex;
+    gap: 5px;
+    font-size: 18px;
+    align-items: center;
+    transform: all 1s;
+}
+
+.box-text-ok i{
+    color: rgb(0, 236, 0);
+    font-size: 20px;
+}
+
+
 @media (max-width:900px) {
     main form{
         grid-template-columns: 1fr;

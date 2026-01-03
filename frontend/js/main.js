@@ -41,6 +41,12 @@ const button = document.getElementById("button")
 const changeAccount = document.getElementById("changeAccount")
 
 
+
+const boxTextOk = document.querySelector(".box-text-ok");
+const TextOk = document.querySelector(".box-text-ok #text-ok");
+const iconOk = document.querySelector(".box-text-ok i")
+
+
 function login(){
         islogin = true;
         boxInputFirstName.style.display = "none";
@@ -196,15 +202,29 @@ button.onclick = () => {
         }
     
         // إذا كان هناك خطأ، امنع الإرسال
-        if (!isValid) {
-        } else {
-            // هنا كود تسجيل الدخول الناجح
-            let data = JSON.parse(localStorage.getItem('userSettings'));
-            if (inputEmail.value === data.email && inputPassword.value === data.password) {
-                window.open("page/home.html", "_top");
-            }
-            
-        }
+        // داخل button.onclick في الجزء الخاص بالـ Login (islogin == true)
+        if (isValid) {
+            let loginData = {
+                email: inputEmail.value,
+                password: inputPassword.value
+            };
+
+            fetch('http://localhost:3000/users/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(loginData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message === "تم تسجيل الدخول بنجاح") {
+                    // حفظ بيانات المستخدم في السيشين أو التوجه للصفحة الرئيسية
+                    window.open("page/home.html", "_top");
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(err => alert("السيرفر لا يعمل أو هناك مشكلة في الاتصال"));
+}
     } else {
         // منطق التسجيل (Sign Up)
          // نمنع التحديث لحفظ البيانات في LocalStorage
@@ -232,18 +252,59 @@ button.onclick = () => {
         }
         
         if(isValid){
-            let users = {
+            // داخل button.onclick في الجزء الخاص بالـ SignUp
+
+            let userData = {
+                username: inputUsername.value,
                 firstName: inputFirstName.value,
                 lastName: inputLastName.value,
-                username: inputUsername.value,
                 email: inputEmail.value,
-                password: inputPassword.value
+                password: inputPassword.value,
+                confirmPassword: inputConfirmPassword.value
             };
-    
-            localStorage.setItem('userSettings', JSON.stringify(users));
-            resitInput();
-            login();
-            }
+
+            // الربط مع السيرفر
+            fetch('http://localhost:3000/users/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(userData), // تحويل البيانات لنص JSON
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                if (data.message === "تم إنشاء الحساب بنجاح") {
+                    iconOk.className = "fa-regular fa-circle-check";
+                    iconOk.style.color = "rgb(0, 236, 0)";
+                    TextOk.textContent = "تم إنشاء حساب"
+                    boxTextOk.style.transform = "translate(-50% , 0px)";
+                    setTimeout(()=> {
+                        boxTextOk.style.transform = "translate(-50% , -80px)";
+                    }, 2000)
+                    resitInput();
+                    login();
+                } else {
+                    if(data.message === "اسم المستخدم هذا مأخوذ، اختر اسماً آخر"){
+                        errorInputUserName.textContent = data.message;
+                    }
+                    if(data.message === "هذا الإيميل مسجل لدينا بالفعل"){
+                        errorInputEmail.textContent = data.message;
+                    }
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                iconOk.className = "fa-regular fa-circle-xmark";
+                iconOk.style.color = "red";
+                TextOk.textContent = "خطأ في السيرفر"
+                boxTextOk.style.transform = "translate(-50% , 0px)";
+                    setTimeout(()=> {
+                        boxTextOk.style.transform = "translate(-50% , -80px)";
+                    }, 2000)
+            });
+
+        }
         
     }
     // إذا كان الزر من نوع type="submit" داخل الفورم، 
